@@ -27,18 +27,29 @@ jobs:
           git -C "$RUNNER_TEMP/www.0x0f.dev" submodule sync --recursive
           git -C "$RUNNER_TEMP/www.0x0f.dev" submodule update --init --recursive
 
+      - name: Site Dir
+        run: |
+          if [ -f "$RUNNER_TEMP/www.0x0f.dev/zola.toml" ]; then
+            echo "SITE_DIR=$RUNNER_TEMP/www.0x0f.dev" >> "$GITHUB_ENV"
+          elif [ -f "$RUNNER_TEMP/www.0x0f.dev/www.0x0f.dev/zola.toml" ]; then
+            echo "SITE_DIR=$RUNNER_TEMP/www.0x0f.dev/www.0x0f.dev" >> "$GITHUB_ENV"
+          else
+            echo "zola.toml not found" >&2
+            exit 1
+          fi
+
       - name: Zola
         run: cargo install --git https://github.com/getzola/zola.git --features indexing-zh,indexing-ja zola --root "$RUNNER_TEMP/zola" --locked
 
       - name: Build Site
         run: |
-          cd "$RUNNER_TEMP/www.0x0f.dev/www.0x0f.dev"
+          cd "$SITE_DIR"
           "$RUNNER_TEMP/zola/bin/zola" build --output-dir=public --minify --force
 
       - name: Update Public
         run: |
           mkdir -p public
-          rsync -a --delete "$RUNNER_TEMP/www.0x0f.dev/www.0x0f.dev/public/" ./public/
+          rsync -a --delete "$SITE_DIR/public/" ./public/
 
       - name: Commit
         run: |
