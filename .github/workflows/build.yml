@@ -22,7 +22,10 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Clone
-        run: git clone https://codeberg.org/shkouyo/www.0x0f.dev.git "$RUNNER_TEMP/www.0x0f.dev"
+        run: |
+          git clone https://codeberg.org/shkouyo/www.0x0f.dev.git "$RUNNER_TEMP/www.0x0f.dev"
+          git -C "$RUNNER_TEMP/www.0x0f.dev" submodule sync --recursive
+          git -C "$RUNNER_TEMP/www.0x0f.dev" submodule update --init --recursive
 
       - name: Zola
         run: cargo install --git https://github.com/getzola/zola.git --features indexing-zh,indexing-ja zola --root "$RUNNER_TEMP/zola" --locked
