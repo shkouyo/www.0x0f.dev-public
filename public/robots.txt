@@ -1,0 +1,12 @@
+
+
+
+
+User-agent: *
+
+Disallow:
+Allow: /
+
+Sitemap: https://www.0x0f.dev/sitemap.xml
+
+

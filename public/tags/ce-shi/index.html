@@ -1,0 +1,273 @@
+<!doctype html><html class=zulari-html lang=zh style=--theme-accent:#cba6f7;--page-width:75rem><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1" name=viewport><meta content="dark light" name=color-scheme><title>
+  
+    测试 - 
+  
+    深渊小栈
+  
+
+  
+</title><meta content="深渊小栈 --- 深渊架构 ShinKouyo 的个人博客. 记录技术笔记, 云端实践, 网络代理, 系统探索与人工智能." name=description><meta content="深渊架构ShinKouyo, 深渊小栈, 深渊小站, ShinKouyo, 个人博客, 技术博客, 软件工程, 系统架构, 架构设计, Linux, Arch Linux, AI, 人工智能, 机器学习, 开源, DevOps, 云服务, SaaS, 后端开发, 性能优化, tags, 测试" name=keywords><meta content=index,follow,max-image-preview:large name=robots><link href=https://www.0x0f.dev/tags/ce-shi/ rel=canonical><meta content=深渊小栈 property=og:site_name><meta content=https://www.0x0f.dev/tags/ce-shi/ property=og:url><meta content=website property=og:type><meta content=zh property=og:locale><meta content="测试 - 深渊小栈" property=og:title><meta content="深渊小栈 --- 深渊架构 ShinKouyo 的个人博客. 记录技术笔记, 云端实践, 网络代理, 系统探索与人工智能." property=og:description><meta content=https://img.0x0f.dev/images/2026/03/02/www-0x0f-dev-318f26a250f346925.jpg property=og:image><meta content=summary_large_image name=twitter:card><meta content="测试 - 深渊小栈" name=twitter:title><meta content="深渊小栈 --- 深渊架构 ShinKouyo 的个人博客. 记录技术笔记, 云端实践, 网络代理, 系统探索与人工智能." name=twitter:description><meta content=https://www.0x0f.dev/tags/ce-shi/ name=twitter:url><meta content=https://img.0x0f.dev/images/2026/03/02/www-0x0f-dev-318f26a250f346925.jpg name=twitter:image><link media="(prefers-color-scheme: light)" href=https://img.0x0f.dev/images/2026/03/02/www-0x0f-dev-1f3cc3934d6d18cd1.webp rel=icon><link media="(prefers-color-scheme: dark)" href=https://img.0x0f.dev/images/2026/03/02/www-0x0f-dev-1f3cc3934d6d18cd1.webp rel=icon><link href=https://img.0x0f.dev/images/2026/03/02/www-0x0f-dev-2cd7c04e90c6e4831.png rel=apple-touch-icon><script type=application/ld+json>
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "深渊小栈",
+        "description": "深渊小栈 --- 深渊架构 ShinKouyo 的个人博客. 记录技术笔记, 云端实践, 网络代理, 系统探索与人工智能.",
+        "inLanguage": "zh",
+        "url": "https://www.0x0f.dev/tags/ce-shi/",
+        "keywords": ["深渊架构ShinKouyo","深渊小栈","深渊小站","ShinKouyo","个人博客","技术博客","软件工程","系统架构","架构设计","Linux","Arch Linux","AI","人工智能","机器学习","开源","DevOps","云服务","SaaS","后端开发","性能优化","tags","测试"]
+      }
+    </script><script>(function () {
+      const THEME_KEY = "zulari-theme";
+      const DEFAULT_MODE = "auto";
+      const FALLBACK_ACCENT = "#7c869b";
+      const html = document.documentElement;
+      let mode = DEFAULT_MODE;
+      let accent = "#cba6f7";
+
+      try {
+        mode = localStorage.getItem(THEME_KEY) || DEFAULT_MODE;
+      } catch (_) {}
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function normalizeHex(value) {
+        const normalized = String(value || "").trim().toLowerCase();
+        const match = normalized.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/);
+        if (!match) return null;
+        if (match[1].length === 3) return `#${match[1].split("").map((ch) => ch + ch).join("")}`;
+        return `#${match[1]}`;
+      }
+
+      function hexToRgb(hex) {
+        const full = normalizeHex(hex);
+        if (!full) return null;
+        return {
+          r: parseInt(full.slice(1, 3), 16),
+          g: parseInt(full.slice(3, 5), 16),
+          b: parseInt(full.slice(5, 7), 16),
+        };
+      }
+
+      function rgbToHsl(rgb) {
+        const r = rgb.r / 255;
+        const g = rgb.g / 255;
+        const b = rgb.b / 255;
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+        const delta = max - min;
+        let h = 0;
+        let s = 0;
+        const l = (max + min) / 2;
+
+        if (delta !== 0) {
+          s = delta / (1 - Math.abs(2 * l - 1));
+          if (max === r) h = ((g - b) / delta) % 6;
+          else if (max === g) h = (b - r) / delta + 2;
+          else h = (r - g) / delta + 4;
+          h *= 60;
+          if (h < 0) h += 360;
+        }
+
+        return { h, s: s * 100, l: l * 100 };
+      }
+
+      function hslToRgb(h, s, l) {
+        const hs = ((h % 360) + 360) % 360;
+        const ss = clamp(s, 0, 100) / 100;
+        const ll = clamp(l, 0, 100) / 100;
+        const c = (1 - Math.abs(2 * ll - 1)) * ss;
+        const x = c * (1 - Math.abs(((hs / 60) % 2) - 1));
+        const m = ll - c / 2;
+        let r1 = 0;
+        let g1 = 0;
+        let b1 = 0;
+
+        if (hs < 60) {
+          r1 = c; g1 = x;
+        } else if (hs < 120) {
+          r1 = x; g1 = c;
+        } else if (hs < 180) {
+          g1 = c; b1 = x;
+        } else if (hs < 240) {
+          g1 = x; b1 = c;
+        } else if (hs < 300) {
+          r1 = x; b1 = c;
+        } else {
+          r1 = c; b1 = x;
+        }
+
+        return {
+          r: Math.round((r1 + m) * 255),
+          g: Math.round((g1 + m) * 255),
+          b: Math.round((b1 + m) * 255),
+        };
+      }
+
+      function rgbToHex(rgb) {
+        const toHex = (n) => clamp(Math.round(n), 0, 255).toString(16).padStart(2, "0");
+        return `#${toHex(rgb.r)}${toHex(rgb.g)}${toHex(rgb.b)}`;
+      }
+
+      function hslToHex(h, s, l) {
+        return rgbToHex(hslToRgb(h, s, l));
+      }
+
+      function tone(h, s, l) {
+        return hslToHex(h, s, l);
+      }
+
+      function normalizeAccent(input) {
+        const hex = normalizeHex(input) || FALLBACK_ACCENT;
+        const rgb = hexToRgb(hex);
+        const hsl = rgbToHsl(rgb);
+        const h = Math.round(hsl.h);
+        // Compress extreme color inputs into a stable readable range.
+        const s = clamp(31 + (hsl.s - 50) * 0.46, 28, 62);
+        const l = clamp(48 + (hsl.l - 50) * 0.20, 42, 56);
+        return { h, s, l };
+      }
+
+      function derivePalette(accentHsl) {
+        const h = accentHsl.h;
+        const s = accentHsl.s;
+        const l = accentHsl.l;
+        const sat = (ratio, min, max) => clamp(s * ratio, min, max);
+
+        return {
+          themeAccent: tone(h, s, l),
+          primaryLight: tone(h, sat(0.92, 30, 56), clamp(l + 4, 48, 60)),
+          pageBgLight: tone(h, sat(0.14, 4, 12), 96),
+          cardBgLight: tone(h, sat(0.10, 3, 10), 99),
+          btnContentLight: tone(h, sat(0.86, 26, 50), 46),
+          btnRegularBgLight: tone(h, sat(0.20, 8, 18), 94),
+          btnRegularBgHoverLight: tone(h, sat(0.22, 9, 20), 92),
+          btnRegularBgActiveLight: tone(h, sat(0.24, 10, 22), 89),
+          btnPlainBgHoverLight: tone(h, sat(0.14, 6, 14), 96),
+          btnPlainBgActiveLight: tone(h, sat(0.18, 7, 16), 94),
+          btnCardBgHoverLight: tone(h, sat(0.14, 5, 14), 97),
+          btnCardBgActiveLight: tone(h, sat(0.2, 8, 20), 94),
+          titleActiveLight: tone(h, sat(0.76, 24, 46), 44),
+          selectionBgLight: tone(h, sat(0.45, 16, 32), 84),
+          linkUnderlineLight: tone(h, sat(0.30, 12, 24), 92),
+          linkHoverLight: tone(h, sat(0.26, 10, 20), 95),
+          linkActiveLight: tone(h, sat(0.40, 16, 30), 89),
+          tocBtnHoverLight: tone(h, sat(0.16, 6, 14), 95),
+          archiveDotLight: tone(h, sat(0.30, 12, 24), 68),
+
+          primaryDark: tone(h, sat(0.75, 26, 54), 68),
+          pageBgDark: tone(h, sat(0.16, 6, 16), 7),
+          cardBgDark: tone(h, sat(0.2, 8, 18), 12),
+          btnContentDark: tone(h, sat(0.7, 24, 50), 74),
+          btnRegularBgDark: tone(h, sat(0.32, 12, 24), 19),
+          btnRegularBgHoverDark: tone(h, sat(0.35, 14, 26), 23),
+          btnRegularBgActiveDark: tone(h, sat(0.40, 16, 28), 27),
+          btnPlainBgHoverDark: tone(h, sat(0.26, 10, 20), 18),
+          btnPlainBgActiveDark: tone(h, sat(0.3, 12, 22), 22),
+          btnCardBgHoverDark: tone(h, sat(0.28, 10, 22), 19),
+          btnCardBgActiveDark: tone(h, sat(0.32, 12, 24), 23),
+          selectionBgDark: tone(h, sat(0.42, 14, 30), 26),
+          floatPanelBgDark: tone(h, sat(0.24, 8, 18), 14),
+          linkUnderlineDark: tone(h, sat(0.5, 18, 34), 28),
+          linkHoverDark: tone(h, sat(0.55, 20, 38), 32),
+          linkActiveDark: tone(h, sat(0.62, 24, 42), 36),
+          tocBtnHoverDark: tone(h, sat(0.28, 10, 22), 20),
+          archiveDotDark: tone(h, sat(0.4, 14, 30), 58),
+        };
+      }
+
+      const inputAccent = normalizeHex(accent);
+      const normalized = normalizeAccent(inputAccent || FALLBACK_ACCENT);
+      const palette = derivePalette(normalized);
+
+      const vars = {
+        "--theme-accent": palette.themeAccent,
+        "--hue": String(normalized.h),
+        "--gen-primary-light": palette.primaryLight,
+        "--gen-page-bg-light": palette.pageBgLight,
+        "--gen-card-bg-light": palette.cardBgLight,
+        "--gen-btn-content-light": palette.btnContentLight,
+        "--gen-btn-regular-bg-light": palette.btnRegularBgLight,
+        "--gen-btn-regular-bg-hover-light": palette.btnRegularBgHoverLight,
+        "--gen-btn-regular-bg-active-light": palette.btnRegularBgActiveLight,
+        "--gen-btn-plain-bg-hover-light": palette.btnPlainBgHoverLight,
+        "--gen-btn-plain-bg-active-light": palette.btnPlainBgActiveLight,
+        "--gen-btn-card-bg-hover-light": palette.btnCardBgHoverLight,
+        "--gen-btn-card-bg-active-light": palette.btnCardBgActiveLight,
+        "--gen-title-active-light": palette.titleActiveLight,
+        "--gen-selection-bg-light": palette.selectionBgLight,
+        "--gen-link-underline-light": palette.linkUnderlineLight,
+        "--gen-link-hover-light": palette.linkHoverLight,
+        "--gen-link-active-light": palette.linkActiveLight,
+        "--gen-toc-btn-hover-light": palette.tocBtnHoverLight,
+        "--gen-archive-dot-light": palette.archiveDotLight,
+        "--gen-primary-dark": palette.primaryDark,
+        "--gen-page-bg-dark": palette.pageBgDark,
+        "--gen-card-bg-dark": palette.cardBgDark,
+        "--gen-btn-content-dark": palette.btnContentDark,
+        "--gen-btn-regular-bg-dark": palette.btnRegularBgDark,
+        "--gen-btn-regular-bg-hover-dark": palette.btnRegularBgHoverDark,
+        "--gen-btn-regular-bg-active-dark": palette.btnRegularBgActiveDark,
+        "--gen-btn-plain-bg-hover-dark": palette.btnPlainBgHoverDark,
+        "--gen-btn-plain-bg-active-dark": palette.btnPlainBgActiveDark,
+        "--gen-btn-card-bg-hover-dark": palette.btnCardBgHoverDark,
+        "--gen-btn-card-bg-active-dark": palette.btnCardBgActiveDark,
+        "--gen-selection-bg-dark": palette.selectionBgDark,
+        "--gen-float-panel-bg-dark": palette.floatPanelBgDark,
+        "--gen-link-underline-dark": palette.linkUnderlineDark,
+        "--gen-link-hover-dark": palette.linkHoverDark,
+        "--gen-link-active-dark": palette.linkActiveDark,
+        "--gen-toc-btn-hover-dark": palette.tocBtnHoverDark,
+        "--gen-archive-dot-dark": palette.archiveDotDark,
+      };
+
+      for (const [key, value] of Object.entries(vars)) {
+        html.style.setProperty(key, value);
+      }
+
+      const useDark = mode === "dark" || (mode !== "light" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      html.classList.toggle("dark", useDark);
+      html.style.colorScheme = useDark ? "dark" : "light";
+      html.classList.add("theme-preload");
+    })();</script><link href=https://fonts.googleapis.com rel=preconnect><link crossorigin href=https://fonts.gstatic.com rel=preconnect><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:FILL@0..1" rel=stylesheet><link href=https://unpkg.com/@fortawesome/fontawesome-free@7/css/all.min.css rel=stylesheet><link href="https://www.0x0f.dev/style.css?h=36ab5095a4c64028a167" rel=stylesheet><link href="https://www.0x0f.dev/vendor/overlayscrollbars/overlayscrollbars.css?h=7ee82063dcba665783a9" rel=stylesheet><link href="https://www.0x0f.dev/vendor/photoswipe/photoswipe.css?h=bb5e956812a813e1bd5b" rel=stylesheet><link title="深渊小栈 Atom" href=https://www.0x0f.dev/atom.xml rel=alternate type=application/atom+xml><link title="深渊小栈 RSS" href=https://www.0x0f.dev/rss.xml rel=alternate type=application/rss+xml><body class=zulari-body><a class=skip-link href=#swup-container>跳到正文</a><div class=top-row id=top-row><div class=navbar-wrapper id=navbar-wrapper><header class="card-base navbar" id=navbar><a class="home-button btn-plain scale-animation" aria-label=深渊小栈 href=/> <span class="material-symbols-rounded home-icon">cloud</span> <span class=home-text>深渊小栈</span> </a><nav aria-label=主导航 class=nav-links><a class="btn-plain scale-animation nav-link-item" href=/> <span class="material-symbols-rounded nav-link-icon">home</span> <span class=nav-link-label>首页</span> </a><a class="btn-plain scale-animation nav-link-item" href=/archive/> <span class="material-symbols-rounded nav-link-icon">archive</span> <span class=nav-link-label>归档</span> </a><a class="btn-plain scale-animation nav-link-item" href=/about/> <span class="material-symbols-rounded nav-link-icon">id_card</span> <span class=nav-link-label>关于</span> </a></nav><div class=nav-actions><div aria-label=搜索 class=search-bar id=search-bar><span class="material-symbols-rounded search-icon">search</span><input autocomplete=off id=search-input-desktop placeholder=搜索 type=search></div><button class="btn-plain scale-animation search-switch" aria-label=搜索 id=search-switch type=button><span class=material-symbols-rounded>search</span></button><div class=theme-switch-wrap role=menu tabindex=-1><button class="btn-plain scale-animation" aria-label=主题 id=scheme-switch type=button><span class=material-symbols-rounded id=scheme-icon>radio_button_partial</span></button><div class="float-panel float-panel-closed light-dark-panel" id=light-dark-panel><button class="btn-plain mode-btn scale-animation" data-theme-value=light><span class=material-symbols-rounded>wb_sunny</span>浅色</button><button class="btn-plain mode-btn scale-animation" data-theme-value=dark><span class=material-symbols-rounded>dark_mode</span>深色</button><button class="btn-plain mode-btn scale-animation" data-theme-value=auto><span class=material-symbols-rounded>radio_button_partial</span>跟随系统</button></div></div><button class="btn-plain scale-animation nav-menu-switch" aria-label=菜单 id=nav-menu-switch type=button><span class=material-symbols-rounded>menu</span></button></div></header></div></div><div class=main-panel id=main-panel><div class=main-grid id=main-grid><aside class="sidebar onload-animation" id=sidebar><div class="sidebar-section sidebar-section-profile"><section class="card-base profile-card"><a aria-label=关于 class=avatar-wrap href=/about/> <img alt=头像 class=avatar loading=lazy src=https://img.0x0f.dev/images/2026/02/27/shkouyo-avatar-jpeg011d57188ccdf17a.jpg> <span class=avatar-overlay><span class=material-symbols-rounded>contact_page</span></span> </a><div class=profile-name>深渊架构ShinKouyo</div><div class=profile-bio>一口一个Object, 吧唧吧唧 😋</div><div class=profile-socials><a rel="external noopener" aria-label=哔哩哔哩 class=social-btn data-external href=https://space.bilibili.com/1668171984/ target=_blank> <span class="fa-brands fa-bilibili"></span> </a><a rel="external noopener" aria-label=电子邮件 class=social-btn data-external href=mailto:i@0x0f.dev target=_blank> <span class="fa-solid fa-envelope"></span> </a><a rel="external noopener" aria-label=Codeberg class=social-btn data-external href=https://codeberg.org/shkouyo/ target=_blank> <span class="fa-brands fa-forgejo"></span> </a></div></section></div><div class="sidebar-section sidebar-section-taxonomy sidebar-sticky" id=sidebar-sticky><section class="card-base widget sidebar-widget onload-animation" data-sidebar-widget=categories data-widget-collapsible=true data-widget-count=1 data-widget-limit=8 style=animation-delay:.15s><h2 class=widget-title>分类</h2><div class="widget-list sidebar-widget-body" data-widget-body><a class="widget-link category-link" href=https://www.0x0f.dev/categories/ce-shi/> <span class=category-link-inner> <span class=category-link-name>测试</span> <span class="badge category-badge">1</span> </span> </a></div><div class=sidebar-widget-toggle-wrap data-widget-toggle-wrap><button class="btn-plain sidebar-widget-toggle" aria-expanded=false data-label-less=收起 data-label-more=更多 data-widget-toggle hidden type=button><span class="material-symbols-rounded sidebar-widget-toggle-icon" data-widget-toggle-icon>more_horiz</span> <span class=sidebar-widget-toggle-label data-widget-toggle-label>更多</span></button></div></section><section class="card-base widget sidebar-widget onload-animation" data-sidebar-widget=tags data-widget-collapsible=true data-widget-count=1 data-widget-limit=20 style=animation-delay:.2s><h2 class=widget-title>标签</h2><div class="tag-list sidebar-widget-body" data-widget-body><a class=tag-link href=https://www.0x0f.dev/tags/ce-shi/>测试</a></div><div class=sidebar-widget-toggle-wrap data-widget-toggle-wrap><button class="btn-plain sidebar-widget-toggle" aria-expanded=false data-label-less=收起 data-label-more=更多 data-widget-toggle hidden type=button><span class="material-symbols-rounded sidebar-widget-toggle-icon" data-widget-toggle-icon>more_horiz</span> <span class=sidebar-widget-toggle-label data-widget-toggle-label>更多</span></button></div></section></div></aside><main class="content transition-swup-fade" id=swup-container tabindex=-1><div class=onload-animation id=content-wrapper><section class="card-base archive-panel onload-animation"><div class=archive-group><div class=archive-group-head><div class=archive-year>2026</div><div class=archive-line-dot></div><div class=archive-count>1 篇文章</div></div><a aria-label=我能吞下玻璃 class=archive-item href=https://www.0x0f.dev/posts/test/> <div class=archive-date>03-01</div> <div class=archive-line-wrap><span class=archive-item-dot></span></div> <div class=archive-title>我能吞下玻璃</div> <div class=archive-tags><span>#测试</span></div> </a></div></section></div></main><footer class="footer onload-animation"><div class=footer-card><div><span>© 2026 深渊架构ShinKouyo</span><span class=footer-sep>·</span><a class="link expand-animation" data-no-swup href=https://www.0x0f.dev/atom.xml>Atom</a><span class=footer-sep>/</span><a class="link expand-animation" data-no-swup href=https://www.0x0f.dev/rss.xml>RSS</a><span class=footer-sep>/</span><a class="link expand-animation" data-no-swup href=https://www.0x0f.dev/sitemap.xml>Sitemap</a><br> 由 <a class="link expand-animation" rel="external noopener" data-external href=https://www.getzola.org/ target=_blank>Zola</a> 强力驱动· <a class="link expand-animation" rel="external noopener" data-external href=https://codeberg.org/shkouyo/www.0x0f.dev/ target=_blank>源代码</a></div></div></footer></div></div><div class=toc-rail><div class=toc-rail-inner><div class="toc-wrapper toc-not-ready" id=toc-wrapper><div class=hide-scrollbar id=toc-inner-wrapper><div class=transition-swup-fade id=toc><div aria-hidden=true class=toc-spacer></div><div aria-hidden=true class=toc-spacer></div></div></div></div></div></div><div class="float-panel float-panel-closed search-panel" id=search-panel><div class="search-bar inside" id=search-bar-inside><span class="material-symbols-rounded search-icon">search</span><input aria-label=搜索 autocomplete=off id=search-input placeholder=搜索 type=search></div><ul aria-live=polite class=search-results id=search-results role=listbox></ul></div><div class="float-panel float-panel-closed nav-menu-panel" id=nav-menu-panel></div><button class="back-to-top-btn hide" aria-label=回到顶部 id=back-to-top-btn type=button><span class=material-symbols-rounded>keyboard_arrow_up</span></button><script>window.ZULARI_CONFIG = {
+      appearance: {
+        mode: "auto",
+        accent: "#cba6f7"
+      },
+      layout: {
+        anchorOffsetPx: 90,
+        backToTopThresholdPx: 320,
+        contentDelayMs: 0
+      },
+      codeblock: {
+        enabled: true,
+        showLanguageBadge: true,
+        showCopyButton: true,
+        showLineNumbers: true,
+        languageBadgeUppercase: true
+      },
+      search: {
+        enabled: true,
+        format: "elasticlunr_javascript",
+        baseName: "search_index",
+        language: "zh"
+      },
+      sidebar: {
+        collapse: {
+          collapsedHeight: "7.5rem"
+        }
+      },
+      toc: {
+        depth: 3
+      },
+      homePath: "/"
+    };</script><script>(function () {
+      if (!("serviceWorker" in navigator)) return;
+      const swUrl = "https://www.0x0f.dev/sw.js?h=b647b47fa15875cb506b";
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register(swUrl).catch(function (err) {
+          console.warn("[zulari] service worker register failed", err);
+        });
+      });
+    })();</script><script src="https://www.0x0f.dev/vendor/overlayscrollbars/overlayscrollbars.browser.es6.js?h=fcd738b4ad90287a38c0"></script><script src="https://www.0x0f.dev/vendor/swup/swup.umd.js?h=d62c1592ffa8c528a3d9"></script><script src="https://www.0x0f.dev/js/app.js?h=e7509c3fdb9867539776" type=module></script>

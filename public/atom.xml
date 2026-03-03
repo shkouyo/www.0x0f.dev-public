@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+  <title>深渊小栈</title>
+  <subtitle>深渊小栈 --- 深渊架构 ShinKouyo 的个人博客. 记录技术笔记, 云端实践, 网络代理, 系统探索与人工智能.</subtitle>
+  <link rel="self" type="application/atom+xml" href="https:&#x2F;&#x2F;www.0x0f.dev&#x2F;atom.xml"/>
+  <link rel="alternate" type="text/html" href="https:&#x2F;&#x2F;www.0x0f.dev"/>
+  <generator uri="https://www.getzola.org/">Zola</generator>
+  <updated>2026-03-01</updated>
+  <id>https:&#x2F;&#x2F;www.0x0f.dev&#x2F;atom.xml</id>
+  
+    <entry xml:lang="zh">
+      <title>我能吞下玻璃</title>
+      <published>2026-03-01</published>
+      <updated>2026-03-01</updated>
+      
+      <author>
+        <name>深渊架构ShinKouyo</name>
+      </author>
+      
+      <link rel="alternate" type="text/html" href="https:&#x2F;&#x2F;www.0x0f.dev&#x2F;posts&#x2F;test&#x2F;"/>
+      <id>https:&#x2F;&#x2F;www.0x0f.dev&#x2F;posts&#x2F;test&#x2F;</id>
+      
+      
+      <content type="html" xml:base="https:&#x2F;&#x2F;www.0x0f.dev&#x2F;posts&#x2F;test&#x2F;">&lt;p&gt;I can eat glass, it does not hurt me.&lt;/p&gt;
+</content>
+    </entry>
+  
+</feed>

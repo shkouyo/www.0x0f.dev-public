@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+    <url>
+      <loc>https://www.0x0f.dev/</loc>
+      
+    </url>
+  
+    <url>
+      <loc>https://www.0x0f.dev/categories/</loc>
+      
+    </url>
+  
+    <url>
+      <loc>https://www.0x0f.dev/categories/ce-shi/</loc>
+      
+    </url>
+  
+    <url>
+      <loc>https://www.0x0f.dev/posts/</loc>
+      
+    </url>
+  
+    <url>
+      <loc>https://www.0x0f.dev/posts/test/</loc>
+      
+        <lastmod>2026-03-01</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://www.0x0f.dev/tags/</loc>
+      
+    </url>
+  
+    <url>
+      <loc>https://www.0x0f.dev/tags/ce-shi/</loc>
+      
+    </url>
+  
+  
+</urlset>

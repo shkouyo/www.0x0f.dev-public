@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>深渊小栈</title>
+    <link>https:&#x2F;&#x2F;www.0x0f.dev</link>
+    <description>深渊小栈 --- 深渊架构 ShinKouyo 的个人博客. 记录技术笔记, 云端实践, 网络代理, 系统探索与人工智能.</description>
+    <language>zh</language>
+    <atom:link href="https:&#x2F;&#x2F;www.0x0f.dev&#x2F;tags&#x2F;ce-shi&#x2F;rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>2026-03-01</lastBuildDate>
+    
+      <item>
+        <title>我能吞下玻璃</title>
+        <link>https:&#x2F;&#x2F;www.0x0f.dev&#x2F;posts&#x2F;test&#x2F;</link>
+        <guid>https:&#x2F;&#x2F;www.0x0f.dev&#x2F;posts&#x2F;test&#x2F;</guid>
+        <pubDate>2026-03-01</pubDate>
+        
+        
+        <description><![CDATA[&lt;p&gt;I can eat glass, it does not hurt me.&lt;&#x2F;p&gt;
+]]></description>
+        <content:encoded><![CDATA[&lt;p&gt;I can eat glass, it does not hurt me.&lt;&#x2F;p&gt;
+]]></content:encoded>
+      </item>
+    
+  </channel>
+</rss>
