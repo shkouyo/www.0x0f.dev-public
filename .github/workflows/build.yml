@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Clone
+        run: git clone https://codeberg.org/shkouyo/www.0x0f.dev.git "$RUNNER_TEMP/www.0x0f.dev"
+
+      - name: Zola
+        run: cargo install --git https://github.com/getzola/zola.git --features indexing-zh,indexing-ja zola --root "$RUNNER_TEMP/zola" --locked
+
+      - name: Build Site
+        run: |
+          cd "$RUNNER_TEMP/www.0x0f.dev/www.0x0f.dev"
+          "$RUNNER_TEMP/zola/bin/zola" build --output-dir=public --minify --force
+
+      - name: Update Public
+        run: |
+          mkdir -p public
+          rsync -a --delete "$RUNNER_TEMP/www.0x0f.dev/www.0x0f.dev/public/" ./public/
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          TS="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          git commit -m "chore(public): ${TS}"
+          git push origin HEAD:main
