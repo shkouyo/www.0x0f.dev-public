@@ -18,8 +18,24 @@ jobs:
       - name: Rust
         uses: dtolnay/rust-toolchain@stable
 
+      - name: Zola Rev
+        id: zola-rev
+        run: echo "rev=$(git ls-remote https://github.com/getzola/zola.git HEAD | awk '{print $1}')" >> "$GITHUB_OUTPUT"
+
       - name: Cache
         uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: zola-build
+          cache-all-crates: "true"
+          cache-directories: |
+            ~/.cargo/target-install
+
+      - name: Cache Zola
+        id: cache-zola
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/zola
+          key: zola-bin-${{ runner.os }}-${{ steps.zola-rev.outputs.rev }}-indexing-zh-indexing-ja
 
       - name: Clone
         run: |
@@ -39,12 +55,13 @@ jobs:
           fi
 
       - name: Zola
-        run: cargo install --git https://github.com/getzola/zola.git --features indexing-zh,indexing-ja zola --root "$RUNNER_TEMP/zola" --locked
+        if: steps.cache-zola.outputs.cache-hit != 'true'
+        run: CARGO_TARGET_DIR=~/.cargo/target-install cargo install --git https://github.com/getzola/zola.git --rev "${{ steps.zola-rev.outputs.rev }}" --features indexing-zh,indexing-ja zola --locked
 
       - name: Build Site
         run: |
           cd "$SITE_DIR"
-          "$RUNNER_TEMP/zola/bin/zola" build --output-dir=public --minify --force
+          ~/.cargo/bin/zola build --output-dir=public --minify --force
 
       - name: Update Public
         run: |
